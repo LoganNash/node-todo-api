@@ -9,12 +9,12 @@ var app = express();
 
 app.use(bodyParser.json());
 
-app.post('/todos', (req, res) => {
+app.post('/Todos', (req, res) => {
     console.log(req.body)
     var todo = new Todo({
         text: req.body.text
     });
-    
+
     todo.save().then((doc) => {
         res.send(doc);
     }, (e) => {
@@ -27,4 +27,4 @@ app.listen(3000, () => {
 })
 
 
-
+module.exports = {app};
