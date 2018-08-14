@@ -1,3 +1,5 @@
+require('./config/config.js')
+
 const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,7 +10,7 @@ const {User} = require('./models/user');
 const {ObjectID} = require('mongodb');
 
 const app = express();
-var port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
@@ -92,10 +94,13 @@ app.patch('/todos/:id', (req, res) => {
   });
 });
 
-if(!module.parent) {
-  app.listen(port, () => {
+// if(!module.parent) {
+//   app.listen(port, () => {
+//     console.log(`Started on port ${port}`);
+//   });
+// }
+app.listen(port, () => {
     console.log(`Started on port ${port}`);
-  });
-}
+});
 
 module.exports = {app};
