@@ -18,10 +18,10 @@ const users = [{
   _id: userTwoID,
   email:'jen@example.com',
   password: 'userTwoPass',
-  tokens: [{
-    access: 'auth',
-    token: 'shdhdjf'
-  }]
+  // tokens: [{
+  //   access: 'auth',
+  //   token: 'shdhdjf'
+  // }]
 }]
 
 const todos = [{
