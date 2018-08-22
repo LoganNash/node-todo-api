@@ -303,6 +303,20 @@ describe('POST /users/login', () => {
   })
 })
 
-// describe('DELETE /users/me/login', () => {
-//
-// })
+describe('DELETE /users/me/login', () => {
+  it('should delete auth token', () => {
+    request(app)
+      .delete('/users/me/login')
+      .send('x-auth', users[0].tokens[0].token)
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+        Todo.findById(users[0]._id.toHexString()).then((user) => {
+          expect(user.tokens).toEqual({});
+          done();
+        }).catch((e) => done(e));
+      })
+  })
+})
